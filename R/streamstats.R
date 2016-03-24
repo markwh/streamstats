@@ -86,7 +86,6 @@ sstat_makeDf <- function(sstatList) {
 }
 
 #' @importFrom magrittr "%>%"
-#' @export
 sstat_makeArgs <- function(arglist) {
   if (length(arglist) == 0)
     return(NULL)

@@ -93,6 +93,7 @@ leafletWatershed <- function(watershed) {
 #'  geojson
 #' @param what Either "boundary" or "pourpoint" describing what part of the
 #'  watershed object to write.
+#' @export
 writeGeoJSON <- function(watershed, file, what = c("boundary", "pourpoint")) {
   what <- match.arg(what)
   if (!(grepl("\\.geojson$", file, ignore.case = TRUE) ||

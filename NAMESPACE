@@ -2,7 +2,7 @@
 
 export(delineateWatershed)
 export(leafletWatershed)
-export(sstat_makeArgs)
+export(writeGeoJSON)
 importFrom(httr,GET)
 importFrom(httr,content)
 importFrom(httr,timeout)
