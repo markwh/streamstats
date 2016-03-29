@@ -38,8 +38,6 @@ delineateWatershed <- function(xlocation, ylocation, rcode = NULL,
 
 #' Returns a watershed based on "workspace" info
 #' Currently untested.
-#' @param xlocation X location of the most downstream point of desired study area.
-#' @param ylocation Y location of the most downstream point of desired study area.
 #' @param rcode 2-3 character code that identifies the Study Area (either a
 #'  State or a Regional Study)
 #' @param workspaceID	string		Service workspace received from watershed
@@ -54,6 +52,7 @@ delineateWatershed <- function(xlocation, ylocation, rcode = NULL,
 #'  might come in handy.
 #' @param simplify	boolean	Whether to simplify returned result, defaut: true
 #' Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
+#' @export
 watershedByWorkspace <- function(rcode = NULL,
                                workspaceID = NULL,
                                includeparameters = NULL,

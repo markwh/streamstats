@@ -30,10 +30,6 @@ might come in handy.}
 
 \item{simplify}{boolean    Whether to simplify returned result, defaut: true
 Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#}
-
-\item{xlocation}{X location of the most downstream point of desired study area.}
-
-\item{ylocation}{Y location of the most downstream point of desired study area.}
 }
 \description{
 Returns a watershed based on "workspace" info
