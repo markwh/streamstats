@@ -6,7 +6,7 @@
 returns a returns a collection of spatial feature names available for the
 workspace.}
 \usage{
-getFeatures(workspaceID, crs, includefeatures = c("globalwatershedpoint",
+getFeatures(workspaceID, rcode, crs, features = c("globalwatershedpoint",
   "globalwatershed"), simplify = "true")
 }
 \arguments{
@@ -16,11 +16,11 @@ service result}
 \item{crs}{string ESPSG spatial reference code. The function rgdal::showEPSG
 might come in handy.}
 
+\item{simplify}{boolean    Whether to simplify returned result, defaut: true}
+
 \item{includefeatures}{string    true    Comma separated list of features to
 include in response. See Feature resource for more information.
 Default: true, returns delineated basin and pourpoint}
-
-\item{simplify}{boolean    Whether to simplify returned result, defaut: true}
 }
 \description{
 Get features for a given workspace

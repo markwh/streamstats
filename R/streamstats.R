@@ -10,7 +10,7 @@
 
 #' @importFrom httr GET timeout
 #' @importFrom httr timeout
-sstat_get <- function(service, arglist = list()) {
+sstat_get <- function(service, arglist = list(), check = TRUE) {
 
   dots <- arglist[!sapply(arglist, is.null)]
   url0 <- paste0('http://streamstatsags.cr.usgs.gov/streamstatsservices/',
@@ -20,6 +20,9 @@ sstat_get <- function(service, arglist = list()) {
   url1 <- paste(url0, append, sep = "?")
   cat(url1)
   res <- GET(url1, timeout(seconds = getOption("timeout")))
+
+  if (!check)
+    return(res)
 
   tt <- sstat_check(res)
   out <- tt # was envir_makeDF(tt) but here don't want data.frames.

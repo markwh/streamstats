@@ -10,10 +10,12 @@
 availFeatures <- function(workspaceID) {
   args <- list(workspaceID = workspaceID)
   ret1 <- sstat_get("features.json", args)
-  ret1$features <- ret1$features %>%
+  ret1$features <- ret1$featurecollection %>%
     lapply(as.data.frame) %>%
     dplyr::bind_rows()
-  ret1
+  out <- ret1$features
+
+  out
 }
 
 #' Get features for a given workspace
@@ -28,12 +30,14 @@ availFeatures <- function(workspaceID) {
 #'  might come in handy.
 #' @param simplify	boolean	Whether to simplify returned result, defaut: true
 #' @export
-getFeatures <- function(workspaceID, crs,
-                        includefeatures = c("globalwatershedpoint",
+getFeatures <- function(workspaceID, rcode, crs,
+                        features = c("globalwatershedpoint",
                                             "globalwatershed"),
                         simplify = "true") {
-  includefeatures <- match.arg(includefeatures, several.ok = TRUE)
-  args <- list(rcode = rcode)
+  features <- match.arg(features, several.ok = TRUE) %>%
+    paste(collapse = ",")
+  args <- list(rcode = rcode, workspaceID = workspaceID, crs = crs,
+               includefeatures = features, simplify = simplify)
   ret1 <- sstat_get("features.geojson", args)
   ret1$flowstatistics <- ret1$flowstatistics %>%
     lapply(as.data.frame) %>%

@@ -27,7 +27,7 @@ availChars <- function(rcode, group = NULL) {
 #' @param includeparameters Comma separated list of region
 #'  parameters to compute. Default: true, will return all parameters for region
 #' @export
-computeChars <- function(rcode, workspaceID, includeparameters = "true") {
+computeChars <- function(workspaceID, rcode, includeparameters = "true") {
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)
   ret1 <- sstat_get("parameters.json", args)

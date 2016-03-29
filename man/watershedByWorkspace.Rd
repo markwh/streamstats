@@ -5,16 +5,16 @@
 \title{Returns a watershed based on "workspace" info
 Currently untested.}
 \usage{
-watershedByWorkspace(rcode = NULL, workspaceID = NULL,
-  includeparameters = NULL, includeflowtypes = NULL,
-  includefeatures = NULL, crs = NULL, simplify = NULL)
+watershedByWorkspace(workspaceID = NULL, rcode,
+  includeparameters = c("false", "true"), includeflowtypes = c("false",
+  "true"), includefeatures = c("true", "false"), crs, simplify = NULL)
 }
 \arguments{
-\item{rcode}{2-3 character code that identifies the Study Area (either a
-State or a Regional Study)}
-
 \item{workspaceID}{string        Service workspace received from watershed
 service result}
+
+\item{rcode}{2-3 character code that identifies the Study Area (either a
+State or a Regional Study)}
 
 \item{includeparameters}{string    Comma separated list of region
 parameters to compute. Default: true, will return all parameters for region}

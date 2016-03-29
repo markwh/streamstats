@@ -7,8 +7,7 @@ Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#}
 \usage{
 delineateWatershed(xlocation, ylocation, rcode = NULL,
   includeparameters = c("false", "true"), includeflowtypes = c("false",
-  "true"), includefeatures = c("true", "false"), crs = NULL,
-  simplify = NULL)
+  "true"), includefeatures = c("true", "false"), crs, simplify = NULL)
 }
 \arguments{
 \item{xlocation}{X location of the most downstream point of desired study area.}

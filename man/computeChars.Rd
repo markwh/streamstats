@@ -5,14 +5,14 @@
 \title{Compute basin characteristics
 Returns the computed basin characteristics based on the request configuration.}
 \usage{
-computeChars(rcode, workspaceID, includeparameters = "true")
+computeChars(workspaceID, rcode, includeparameters = "true")
 }
 \arguments{
-\item{rcode}{2-3 character code that identifies the Study Area (either a
-State or a Regional Study)}
-
 \item{workspaceID}{Service workspace received from watershed
 service result}
+
+\item{rcode}{2-3 character code that identifies the Study Area (either a
+State or a Regional Study)}
 
 \item{includeparameters}{Comma separated list of region
 parameters to compute. Default: true, will return all parameters for region}

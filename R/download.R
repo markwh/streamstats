@@ -8,10 +8,17 @@
 #' @param workspaceID	string		Service workspace received from watershed
 #'  service result
 #' @param format either "geodatabase" or "shapefile"
+#' @param file Where to save the data, should be .zip
 #' @importFrom magrittr "%>%"
-availChars <- function(workspaceID, format = c("geodatabase", "shapefile")) {
+#' @importFrom httr content
+downloadGIS <- function(workspaceID, file, format = c("geodatabase", "shapefile")) {
+
+  if(!grepl("\\.zip$", file))
+    warning("file should be a .zip file.")
+
   format <- match.arg(format)
   format <- ifelse(format == "shapefile", "SHAPE", "")
   args <- list(workspaceID = workspaceID, format = format)
-  ret1 <- sstat_get("download", args)
+  ret1 <- content(sstat_get("download", args, check = FALSE))
+  writeBin(ret1, con = file)
 }

@@ -20,6 +20,8 @@ availFlowStats <- function(rcode) {
 
 #' Compute flow statistics
 #' Returns the computed flow statistic values based on the request configuration.
+#' Currently does *not* return all of the information retrieved by the API call.
+#' References cited include
 #' @param rcode 2-3 character code that identifies the Study Area (either a
 #'  State or a Regional Study)
 #' @param workspaceID	Service workspace received from watershed
@@ -27,12 +29,32 @@ availFlowStats <- function(rcode) {
 #' @param includeflowtypes Comma separated list of flow types
 #'   to compute. Default: true, will return all flow types available for region
 #' @export
-computeFlowStats <- function(rcode, workspaceID, includeparameters = "true") {
+computeFlowStats <- function(workspaceID, rcode, includeparameters = "true") {
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)
   ret1 <- sstat_get("flowstatistics.json", args)
-  ret1$flowstatistics <- ret1$flowstatistics %>%
+  flowstats <- ret1$Statisitcs$Streamstats$STREAMFLOWS$STREAMFLOW
+  fsnames <- vapply(flowstats, `[[`, character(1), "@name")
+  fsdfs <- lapply(flowstats, formatFlowStats) %>%
+    setNames(make.names(fsnames))
+
+  out <- fsdfs
+
+  out
+}
+
+#' @importFrom dplyr bind_rows
+formatFlowStats <- function(fslist) {
+  nss <- fslist$NSSproject$NSSScenario$NSSRegion %>% unlist %>%
+    setNames(make.names(names(.)))
+  params <- fs_toDf(fslist$REGIONS$REGION$PARAMETERS$PARAMETER)
+  flow <- fs_toDf(fslist$FLOWS$FLOWTYPE$FLOW)
+  out <- list(nss = nss, params = params, flow = flow)
+
+}
+
+fs_toDf <- function(fselem) {
+  fselem %>%
     lapply(as.data.frame) %>%
-    dplyr::bind_rows()
-  ret1
+    bind_rows()
 }
