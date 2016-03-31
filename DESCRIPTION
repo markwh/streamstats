@@ -1,14 +1,19 @@
 Package: streamstats
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: R bindings to the USGS Streamstats API
+Version: 0.0.1.9000
+Authors@R: c(
+    person("Mark", "Hagemann", email = "mark.hagemann@gmail.com",
+           role = c("aut", "cre")))
+Description: Functions for delineating, visualizing, computing statistics about
+    watersheds.
+License: MIT
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Suggests: testthat,
     leaflet
 Imports: magrittr,
-    jsonlite
+    jsonlite,
+    httr,
+    maps,
+    maptools
