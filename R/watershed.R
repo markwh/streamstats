@@ -33,6 +33,11 @@ delineateWatershed <- function(xlocation, ylocation, rcode = NULL,
                crs = crs, simplify = simplify)
   ret1 <- sstat_get("watershed.geojson", args)
   attr(ret1, "class") <- "watershed"
+
+  if (includeparameters) {
+    ret1$parameters <- fs_toDf(ret1$parameters)
+  }
+
   ret1
 }
 
@@ -68,6 +73,11 @@ watershedByWorkspace <- function(workspaceID = NULL,
                includefeatures = includefeatures,
                crs = crs, simplify = simplify)
   ret1 <- sstat_get("watershed.geojson", args)
+
+  if (includeparameters) {
+    ret1$parameters <- fs_toDf(ret1$parameters)
+  }
+
   attr(ret1, "class") <- "watershed"
   ret1
 }
@@ -106,8 +116,17 @@ writeGeoJSON <- function(watershed, file, what = c("boundary", "pourpoint")) {
     warning("file should probably have a .json or .geojson extension...")
   elem <- ifelse(what == "boundary", 2, 1)
 
-  piece <- watershed$featurecollection[[elem]]$feature
+  piece <- pullFeatureCollection(watershed, what = what)
   outstr <- jsonlite::toJSON(piece, auto_unbox = TRUE)
   writeLines(outstr, con = file)
   invisible(outstr)
+}
+
+#' extract part of watershed list corresponding to an individual feature collection
+#' Returns a FeatureCollection.
+pullFeatureCollection <- function(ws, what = c("boundary", "pourpoint")) {
+  what <- match.arg(what)
+  elem <- ifelse(what == "boundary", 2, 1)
+  out <- ws$featurecollection[[elem]]$feature
+  out
 }

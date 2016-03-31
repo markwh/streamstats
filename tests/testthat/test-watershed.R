@@ -30,3 +30,24 @@ test_that("writing to geojson file works", {
 
   expect_is(ll, "leaflet")
 })
+
+
+test_that("flowstats and such are returned when requested", {
+  ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+                            includeparameters = "true",
+                            includeflowtypes = "true")
+  expect_is(ws1$parameters, "data.frame")
+})
+
+test_that("watersheds can be combined", {
+  data(westfield)
+  data(pommoqusset)
+
+  combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+  expect_is(combo, "watershed")
+
+  l1 <- leafletWatershed(combo)
+  expect_is(l1, "leaflet")
+  l1
+
+})

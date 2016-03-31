@@ -2,6 +2,8 @@ context("workspace functions")
 
 # These will take several minutes to run.
 
+options("timeout" = 240)
+
 test_that("Functions to get, use watershed workspace work", {
   ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326)
   expect_is(ws1, "watershed")

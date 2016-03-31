@@ -11,6 +11,7 @@
 #' @param file Where to save the data, should be .zip
 #' @importFrom magrittr "%>%"
 #' @importFrom httr content
+#' @export
 downloadGIS <- function(workspaceID, file, format = c("geodatabase", "shapefile")) {
 
   if(!grepl("\\.zip$", file))

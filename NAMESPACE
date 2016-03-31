@@ -2,9 +2,11 @@
 
 export(availChars)
 export(availFeatures)
+export(combineWatersheds)
 export(computeChars)
 export(computeFlowStats)
 export(delineateWatershed)
+export(downloadGIS)
 export(getFeatures)
 export(leafletWatershed)
 export(watershedByWorkspace)

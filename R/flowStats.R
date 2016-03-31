@@ -29,7 +29,8 @@ availFlowStats <- function(rcode) {
 #' @param includeflowtypes Comma separated list of flow types
 #'   to compute. Default: true, will return all flow types available for region
 #' @export
-computeFlowStats <- function(workspaceID, rcode, includeparameters = "true") {
+computeFlowStats <- function(workspaceID, rcode,
+                             includeparameters = c("true", "false")) {
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)
   ret1 <- sstat_get("flowstatistics.json", args)

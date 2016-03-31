@@ -7,7 +7,7 @@ Returns the computed flow statistic values based on the request configuration.
 Currently does *not* return all of the information retrieved by the API call.
 References cited include}
 \usage{
-computeFlowStats(workspaceID, rcode, includeparameters = "true")
+computeFlowStats(workspaceID, rcode, includeparameters = c("true", "false"))
 }
 \arguments{
 \item{workspaceID}{Service workspace received from watershed
