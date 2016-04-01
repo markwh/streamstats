@@ -126,7 +126,13 @@ writeGeoJSON <- function(watershed, file, what = c("boundary", "pourpoint")) {
 #' Returns a FeatureCollection.
 pullFeatureCollection <- function(ws, what = c("boundary", "pourpoint")) {
   what <- match.arg(what)
-  elem <- ifelse(what == "boundary", 2, 1)
-  out <- ws$featurecollection[[elem]]$feature
+  fc <- setNames(ws$featurecollection,
+                 vapply(ws$featurecollection, `[[`, character(1), "name"))
+  elem <- ifelse(what == "boundary", "globalwatershed", "globalwatershedpoint")
+
+  out <- fc[[elem]]$feature
+  if (!is.list(out) || length(out$features) == 0)
+    out <- NA
+
   out
 }

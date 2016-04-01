@@ -78,16 +78,6 @@ sstat_parse <- function(req) {
   jsonlite::fromJSON(text, simplifyVector = FALSE)
 }
 
-
-sstat_makeDf <- function(sstatList) {
-  allnames = Reduce(unique, lapply(sstatList, names))
-  allrows = lapply(sstatList, `[`, allnames)
-  allrows = lapply(allrows, setNames, allnames)
-  allrows = lapply(allrows, nullToNA)
-  out <- rbind_all2(allrows)
-  out
-}
-
 #' @importFrom magrittr "%>%"
 sstat_makeArgs <- function(arglist) {
   if (length(arglist) == 0)

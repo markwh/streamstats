@@ -56,6 +56,6 @@ formatFlowStats <- function(fslist) {
 
 fs_toDf <- function(fselem) {
   fselem %>%
-    lapply(as.data.frame) %>%
+    lapply(as.data.frame, stringsAsFactors = FALSE) %>%
     bind_rows()
 }

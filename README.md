@@ -2,4 +2,9 @@
 
 See API documentation over [here](http://streamstatsags.cr.usgs.gov/streamstatsservices/#)
 
-Currently only has basic functionality for extracting, working with watersheds. May be developed beyond this in the future. Collaborators welcome! 
+Downloading and using (in R):
+
+```
+devtools::install_github("markwh/streamstats")
+library(streamstats)
+```

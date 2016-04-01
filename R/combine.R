@@ -19,26 +19,48 @@
 #'   data(pommoqusset)
 #'   combo <- combineWatersheds(list(westfield, pommoqusset), id = c("wf", "pom"))
 #'   leafletWatershed(combo)
+#' @importFrom assertthat assert_that
 #' @export
 combineWatersheds <- function(wslist, id) {
   stopifnot(all(sapply(wslist, is, "watershed")))
 
-  # objects to be filled with all parts later on
-  bnd <- wslist[[1]]$featurecollection[[2]]
-  ppt <- wslist[[1]]$featurecollection[[1]]
+  # Make sure all used the same coordinate system.
+  crs <- vapply(wslist, function(x)
+    x$featurecollection[[1]]$feature$crs$properties$code, numeric(1)) %>%
+    unique()
+  assert_that(length(crs) == 1)
 
   # extract watershed boundaries
-  boundaries <- lapply(wslist, pullFeatureCollection, what = "boundary") %>%
-    lapply(function(fc) fc$features[[1]]) %>%
-    Map(f = addID, ftr = ., id = id)
+  boundaries0 <- lapply(wslist, pullFeatureCollection, what = "boundary")
+  nobounds <- is.na(boundaries0)
+
+  if (sum(nobounds) > 0)
+    warning(paste0("The following id's had watersheds with no boundary information: ",
+                   paste(id[nobounds], collapse = ", ")))
+
+  boundaries <- lapply(boundaries0[!nobounds], function(fc) fc$features[[1]]) %>%
+    Map(f = addID, ftr = ., id = id[!nobounds])
+
   # extract pourpoints
-  pourpoints <- lapply(wslist, pullFeatureCollection, what = "pourpoint") %>%
-    lapply(function(fc) fc$features[[1]]) %>%
-    Map(f = addID, ftr = ., id = id)
+  pourpoints0 <- lapply(wslist, pullFeatureCollection, what = "pourpoint")
+  nopours <- is.na(pourpoints0)
+
+  if (sum(nopours) > 0)
+    warning(paste0("The following id's had watersheds with no pourpoint information: ",
+                   paste(id[nopours], collapse = ", ")))
+
+  pourpoints <- lapply(pourpoints0[!nopours], function(fc) fc$features[[1]]) %>%
+    Map(f = addID, ftr = ., id = id[!nopours])
 
   # combine into FeaturecCllections
-  bnd$feature$features <- boundaries
-  ppt$feature$features <- pourpoints
+  bnd <- list(name = "globalwatershed",
+              feature = list(type = "FeatureCollection",
+                             crs = crs,
+                             features = boundaries))
+  ppt <- list(name = "globalwatershed",
+              feature = list(type = "FeatureCollection",
+                             crs = crs,
+                             features = pourpoints))
 
   out <- structure(list(featurecollection = list(pourpoints = ppt,
                                                  boundaries = bnd)),
@@ -50,3 +72,5 @@ addID <- function(ftr, id) {
   ftr$properties$ID <- id
   ftr
 }
+
+
