@@ -11,7 +11,7 @@ availFlowStats <- function(rcode) {
   args <- list(rcode = rcode)
   ret1 <- sstat_get("flowstatistics.json", args)
   ret1$flowstatistics <- ret1$flowstatistics %>%
-    lapply(as.data.frame) %>%
+    lapply(as.data.frame, stringsAsFactors = FALSE) %>%
     dplyr::bind_rows()
   ret1
 }
@@ -31,6 +31,7 @@ availFlowStats <- function(rcode) {
 #' @export
 computeFlowStats <- function(workspaceID, rcode,
                              includeparameters = c("true", "false")) {
+  stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)
   ret1 <- sstat_get("flowstatistics.json", args)
@@ -52,10 +53,4 @@ formatFlowStats <- function(fslist) {
   flow <- fs_toDf(fslist$FLOWS$FLOWTYPE$FLOW)
   out <- list(nss = nss, params = params, flow = flow)
 
-}
-
-fs_toDf <- function(fselem) {
-  fselem %>%
-    lapply(as.data.frame, stringsAsFactors = FALSE) %>%
-    bind_rows()
 }

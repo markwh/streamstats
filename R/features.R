@@ -8,10 +8,11 @@
 #'  service result
 #' @export
 availFeatures <- function(workspaceID) {
+  stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   args <- list(workspaceID = workspaceID)
   ret1 <- sstat_get("features.json", args)
   ret1$features <- ret1$featurecollection %>%
-    lapply(as.data.frame) %>%
+    lapply(as.data.frame, stringsAsFactors = FALSE) %>%
     dplyr::bind_rows()
   out <- ret1$features
 
@@ -34,13 +35,14 @@ getFeatures <- function(workspaceID, rcode, crs,
                         features = c("globalwatershedpoint",
                                             "globalwatershed"),
                         simplify = "true") {
+  stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   features <- match.arg(features, several.ok = TRUE) %>%
     paste(collapse = ",")
   args <- list(rcode = rcode, workspaceID = workspaceID, crs = crs,
                includefeatures = features, simplify = simplify)
   ret1 <- sstat_get("features.geojson", args)
   ret1$flowstatistics <- ret1$flowstatistics %>%
-    lapply(as.data.frame) %>%
+    lapply(as.data.frame, stringsAsFactors = FALSE) %>%
     dplyr::bind_rows()
   ret1
   attr(ret1, "class") <- "watershed"

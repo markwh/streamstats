@@ -13,7 +13,7 @@
 #' @importFrom httr content
 #' @export
 downloadGIS <- function(workspaceID, file, format = c("geodatabase", "shapefile")) {
-
+  stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   if(!grepl("\\.zip$", file))
     warning("file should be a .zip file.")
 

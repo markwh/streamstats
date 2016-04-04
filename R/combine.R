@@ -65,6 +65,19 @@ combineWatersheds <- function(wslist, id) {
   out <- structure(list(featurecollection = list(pourpoints = ppt,
                                                  boundaries = bnd)),
                    class = "watershed")
+
+  # combine parameters
+  hasparams <- vapply(wslist, function(ws) !is.null(ws$parameters), logical(1))
+  if (any(hasparams)) {
+    paramIDs <- id[hasparams]
+    allparams <- wslist[hasparams] %>%
+      lapply(`[[`, "parameters") %>%
+      setNames(make.names(id[hasparams])) %>%
+      bind_rows(.id = "ID")
+
+    out$parameters <- allparams
+  }
+
   out
 }
 

@@ -13,7 +13,7 @@ availChars <- function(rcode, group = NULL) {
   args <- list(rcode = rcode, group = group)
   ret1 <- sstat_get("parameters.json", args)
   ret1$parameters <- ret1$parameters %>%
-    lapply(as.data.frame) %>%
+    lapply(as.data.frame, stringsAsFactors = FALSE) %>%
     dplyr::bind_rows()
   ret1
 }
@@ -30,9 +30,10 @@ availChars <- function(rcode, group = NULL) {
 computeChars <- function(workspaceID, rcode, includeparameters = "true") {
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)
+  stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   ret1 <- sstat_get("parameters.json", args)
   ret1$parameters <- ret1$parameters %>%
-    lapply(as.data.frame) %>%
+    lapply(as.data.frame, stringsAsFactors = FALSE) %>%
     dplyr::bind_rows()
   ret1
 }

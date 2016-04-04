@@ -35,4 +35,12 @@ might come in handy.}
 Delineate watershed based on location specification
 Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
 }
+\examples{
+# Not run
+# Delineate a watershed and extract parameters using WGS83
+ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+includeparameters = "true"
+# end Not run
+
+}
 

@@ -14,6 +14,13 @@
 #' @param crs	string ESPSG spatial reference code. The function rgdal::showEPSG
 #'  might come in handy.
 #' @param simplify	boolean	Whether to simplify returned result, defaut: true
+#' @examples
+#' # Not run
+#' # Delineate a watershed and extract parameters using WGS83
+#' ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+#' includeparameters = "true"
+#' # end Not run
+#'
 #' @export
 
 delineateWatershed <- function(xlocation, ylocation, rcode = NULL,
@@ -58,12 +65,13 @@ delineateWatershed <- function(xlocation, ylocation, rcode = NULL,
 #' @param simplify	boolean	Whether to simplify returned result, defaut: true
 #' Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
 #' @export
-watershedByWorkspace <- function(workspaceID = NULL,
+watershedByWorkspace <- function(workspaceID,
                                  rcode,
                                  includeparameters = c("false", "true"),
                                  includeflowtypes = c("false", "true"),
                                  includefeatures = c("true", "false"),
                                  crs, simplify = NULL) {
+  stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   includeparameters <- match.arg(includeparameters)
   includeflowtypes <- match.arg(includeflowtypes)
   includefeatures <- match.arg(includefeatures)
