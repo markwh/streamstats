@@ -23,12 +23,13 @@
 #' @export
 combineWatersheds <- function(wslist, id) {
   stopifnot(all(sapply(wslist, is, "watershed")))
-
+  wslist <- unname(wslist)
   # Make sure all used the same coordinate system.
-  crs <- vapply(wslist, function(x)
-    x$featurecollection[[1]]$feature$crs$properties$code, numeric(1)) %>%
+  crslist <- lapply(wslist, function(x)
+    x$featurecollection[[1]]$feature$crs)
+  crscodes <- vapply(crslist, function(x) x$properties$code, numeric(1)) %>%
     unique()
-  assert_that(length(crs) == 1)
+  assert_that(length(crscodes) == 1)
 
   # extract watershed boundaries
   boundaries0 <- lapply(wslist, pullFeatureCollection, what = "boundary")
@@ -55,11 +56,11 @@ combineWatersheds <- function(wslist, id) {
   # combine into FeaturecCllections
   bnd <- list(name = "globalwatershed",
               feature = list(type = "FeatureCollection",
-                             crs = crs,
+                             crs = crslist[[1]],
                              features = boundaries))
-  ppt <- list(name = "globalwatershed",
+  ppt <- list(name = "globalwatershedpoint",
               feature = list(type = "FeatureCollection",
-                             crs = crs,
+                             crs = crslist[[1]],
                              features = pourpoints))
 
   out <- structure(list(featurecollection = list(pourpoints = ppt,
@@ -85,5 +86,6 @@ addID <- function(ftr, id) {
   ftr$properties$ID <- id
   ftr
 }
+
 
 

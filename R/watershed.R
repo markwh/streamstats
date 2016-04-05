@@ -95,7 +95,7 @@ watershedByWorkspace <- function(workspaceID,
 #' boundary as well as the pour point.
 #' @param watershed an object of class "watershed", as returned by
 #' delineateWatershed()
-#' @importFrom leaflet leaflet addTiles addGeoJSON
+#' @importFrom leaflet leaflet addTiles addGeoJSON addMarkers
 #' @export
 leafletWatershed <- function(watershed) {
   if (!requireNamespace("leaflet", quietly = TRUE)) {
@@ -103,10 +103,16 @@ leafletWatershed <- function(watershed) {
          call. = FALSE)
   }
 
+  pointLalo <- extractLaLo(watershed)
+
+  if (is.null(pointLalo$ID))
+    pointLalo$ID = NA
+
+  # params = watershed$parameters
   leaflet() %>%
     addTiles() %>%
     addGeoJSON(watershed$featurecollection[[2]]$feature) %>%
-    addGeoJSON(watershed$featurecollection[[1]]$feature)
+    addMarkers(lng = ~lon, lat = ~lat, data = pointLalo, popup = ~ID)
 }
 
 #' Write part of a `watershed` object to file in geoJSON format.
@@ -120,7 +126,7 @@ leafletWatershed <- function(watershed) {
 writeGeoJSON <- function(watershed, file, what = c("boundary", "pourpoint")) {
   what <- match.arg(what)
   if (!(grepl("\\.geojson$", file, ignore.case = TRUE) ||
-         grepl("\\.json$", file, ignore.case = TURE)))
+         grepl("\\.json$", file, ignore.case = TRUE)))
     warning("file should probably have a .json or .geojson extension...")
   elem <- ifelse(what == "boundary", 2, 1)
 
