@@ -35,23 +35,23 @@ sstat_compact <- function(l) {
   Filter(Negate(is.null), l)
 }
 
-#' @importFrom httr content warn_for_status
+#' @importFrom httr content stop_for_status
 sstat_check <- function(x) {
   if (!x$status_code == 200) {
     stnames <- names(content(x))
     if (!is.null(stnames)) {
       if ("developerMessage" %in% stnames | "message" %in%
           stnames) {
-        warning(sprintf("Error: (%s) - %s", x$status_code,
+        stop(sprintf("Error: (%s) - %s", x$status_code,
                         sstat_compact(list(content(x)$developerMessage,
                                           content(x)$message))))
       }
       else {
-        warning(sprintf("Error: (%s)", x$status_code))
+        stop(sprintf("Error: (%s)", x$status_code))
       }
     }
     else {
-      warn_for_status(x)
+      stop_for_status(x)
     }
   }
   else {

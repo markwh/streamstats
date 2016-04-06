@@ -39,13 +39,13 @@ delineateWatershed <- function(xlocation, ylocation, rcode = NULL,
                includefeatures = includefeatures,
                crs = crs, simplify = simplify)
   ret1 <- sstat_get("watershed.geojson", args)
-  attr(ret1, "class") <- "watershed"
+  # attr(ret1, "class") <- "watershed"
 
   if (includeparameters) {
     ret1$parameters <- fs_toDf(ret1$parameters)
   }
 
-  ret1
+  ret1 <- structure(ret1, class = "watershed")
 }
 
 #' Returns a watershed based on "workspace" info

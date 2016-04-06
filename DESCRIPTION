@@ -1,7 +1,7 @@
 Package: streamstats
 Type: Package
 Title: R bindings to the USGS Streamstats API
-Version: 0.0.1.9004
+Version: 0.0.1.9005
 Authors@R: c(
     person("Mark", "Hagemann", email = "mark.hagemann@gmail.com",
            role = c("aut", "cre")))
