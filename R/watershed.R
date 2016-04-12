@@ -150,3 +150,42 @@ pullFeatureCollection <- function(ws, what = c("boundary", "pourpoint")) {
 
   out
 }
+
+
+
+#' Convert watershed to sp
+#' Returns either SpatialPointsDataFrame or SpatialPolygonsDataFrame
+#'
+#' @param watershed an object of class "watershed", as returned by
+#' delineateWatershed(), or combineWatersheds()
+#' @param what Either "boundary" or "pourpoint" describing what part of the
+#'  watershed object to write.
+#'  @importFrom rgdal readOGR
+#'  @export
+
+toSp <- function(watershed, what = c("boundary", "pourpoint")) {
+  what <- match.arg(what)
+  tpf <- tempfile(fileext = ".geojson")
+  writeGeoJSON(watershed, file = tpf, what = what)
+
+  out <- readOGR(tpf, "OGRGeoJSON")
+  unlink(tpf)
+  out
+}
+
+#' Convert watershed to ESRI shapefile
+#'
+#' @param watershed an object of class "watershed", as returned by
+#' delineateWatershed(), or combineWatersheds()
+#' @param layer Name of layer in resulting shapefile
+#' @param dir Directory where shapefile files should be written.
+#' @param what Either "boundary" or "pourpoint" describing what part of the
+#'  watershed object to write.
+#'  @importFrom rgdal writeOGR
+#'  @export
+writeShapefile <- function(watershed, layer, dir = ".", what = c("boundary", "pourpoint")) {
+  what <- match.arg(what)
+  sp <- toSp(watershed, what = what)
+
+  writeOGR(sp, dir, layer = layer, driver = "ESRI Shapefile")
+}

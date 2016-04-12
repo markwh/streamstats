@@ -55,3 +55,21 @@ test_that("combined watersheds have combined parameter datasets", {
   expect_is(combo$parameters, "data.frame")
 
 })
+
+
+test_that("conversion to sp and shapefile works", {
+  data("westfield")
+  data("pommoqusset")
+  combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+
+  expect_is(toSp(combo, "boundary"), "SpatialPolygonsDataFrame")
+  expect_is(toSp(combo, "pourpoint"), "SpatialPointsDataFrame")
+
+  td <- tempdir()
+  writeShapefile(combo, "bndry", td)
+  writeShapefile(combo, "pourpts", td, what = "pourpoint")
+
+  expect_is(readOGR(td, layer = "bndry"), "SpatialPolygonsDataFrame")
+  expect_is(readOGR(td, layer = "pourpts"), "SpatialPointsDataFrame")
+  unlink(list.files(tempdir(), full.names = TRUE))
+})
