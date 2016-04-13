@@ -16,9 +16,7 @@ delineateWatershed(), or combineWatersheds()}
 \item{dir}{Directory where shapefile files should be written.}
 
 \item{what}{Either "boundary" or "pourpoint" describing what part of the
-watershed object to write.
-@importFrom rgdal writeOGR
-@export}
+watershed object to write.}
 }
 \description{
 Convert watershed to ESRI shapefile

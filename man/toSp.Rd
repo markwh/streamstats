@@ -12,9 +12,7 @@ toSp(watershed, what = c("boundary", "pourpoint"))
 delineateWatershed(), or combineWatersheds()}
 
 \item{what}{Either "boundary" or "pourpoint" describing what part of the
-watershed object to write.
-@importFrom rgdal readOGR
-@export}
+watershed object to write.}
 }
 \description{
 Convert watershed to sp
