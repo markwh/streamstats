@@ -17,4 +17,7 @@ Imports: magrittr,
     httr,
     maps,
     maptools,
-    assertthat
+    assertthat,
+    dplyr,
+    rgdal,
+    leaflet

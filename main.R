@@ -5,6 +5,8 @@ library(testthat)
 
 
 # testing
+use_travis()
+check()
 test()
 
 # documenting, building
@@ -18,7 +20,9 @@ use_data(pommoqusset)
 # Using packages
 
 use_package("magrittr")
-use_package("leaflet", type = "Suggests")
+use_package("dplyr")
+use_package("rgdal")
+use_package("leaflet")
 use_package("jsonlite")
 use_package("httr")
 use_package("maps")

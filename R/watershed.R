@@ -15,11 +15,11 @@
 #'  might come in handy.
 #' @param simplify	boolean	Whether to simplify returned result, defaut: true
 #' @examples
-#' # Not run
+#' \dontrun{
 #' # Delineate a watershed and extract parameters using WGS83
 #' ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
 #' includeparameters = "true"
-#' # end Not run
+#' }
 #'
 #' @export
 
