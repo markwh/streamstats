@@ -3,8 +3,10 @@
 language: r
 warnings_are_errors: true
 sudo: required
+cache: packages
 
 apt_packages:
+  - libhdf5-serial-dev
   - libgdal-dev
   - libgdal1-dev
   - libproj-dev
