@@ -166,6 +166,10 @@ pullFeatureCollection <- function(ws, what = c("boundary", "pourpoint")) {
 #'
 
 toSp <- function(watershed, what = c("boundary", "pourpoint")) {
+
+  if (!requireNamespace("rgdal", quietly = TRUE))
+    stop("rgdal needed for this functionto work. Please install it.",
+         call. = FALSE)
   what <- match.arg(what)
   tpf <- tempfile(fileext = ".geojson")
   writeGeoJSON(watershed, file = tpf, what = what)
