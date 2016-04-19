@@ -5,7 +5,7 @@ library(testthat)
 
 
 # testing
-use_travis()
+# use_travis() # Not working with rgdal!
 check()
 test()
 
