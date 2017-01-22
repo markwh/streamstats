@@ -2,8 +2,7 @@
 % Please edit documentation in R/watershed.R
 \name{delineateWatershed}
 \alias{delineateWatershed}
-\title{Delineate watershed based on location specification
-Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#}
+\title{Delineate watershed based on location specification}
 \usage{
 delineateWatershed(xlocation, ylocation, rcode = NULL,
   includeparameters = c("false", "true"), includeflowtypes = c("false",
@@ -32,7 +31,6 @@ might come in handy.}
 \item{simplify}{boolean    Whether to simplify returned result, defaut: true}
 }
 \description{
-Delineate watershed based on location specification
 Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
 }
 \examples{

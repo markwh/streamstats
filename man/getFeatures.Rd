@@ -2,9 +2,7 @@
 % Please edit documentation in R/features.R
 \name{getFeatures}
 \alias{getFeatures}
-\title{Get features for a given workspace
-returns a returns a collection of spatial feature names available for the
-workspace.}
+\title{Get features for a given workspace}
 \usage{
 getFeatures(workspaceID, rcode, crs, features = c("globalwatershedpoint",
   "globalwatershed"), simplify = "true")
@@ -23,7 +21,6 @@ include in response. See Feature resource for more information.
 Default: true, returns delineated basin and pourpoint}
 }
 \description{
-Get features for a given workspace
 returns a returns a collection of spatial feature names available for the
 workspace.
 }

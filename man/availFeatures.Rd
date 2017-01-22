@@ -2,9 +2,7 @@
 % Please edit documentation in R/features.R
 \name{availFeatures}
 \alias{availFeatures}
-\title{List available features for a given workspace
-returns a returns a collection of spatial feature names available for the
-workspace.}
+\title{List available features for a given workspace}
 \usage{
 availFeatures(workspaceID)
 }
@@ -13,7 +11,6 @@ availFeatures(workspaceID)
 service result}
 }
 \description{
-List available features for a given workspace
 returns a returns a collection of spatial feature names available for the
 workspace.
 }

@@ -1,0 +1,512 @@
+bnd$feature$features <- boundaries
+ppt$feature$features <- pourpoints
+jsonlite::toJSON(ppt[[1]], auto_unbox = TRUE)
+jsonlite::toJSON(ppt, auto_unbox = TRUE)
+str(ppt, 1)
+jsonlite::toJSON(ppt$feature, auto_unbox = TRUE)
+out <- structure(list(boundaries = bnd, pourpoints = ppt),
+class = "watershedlist")
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(out$boundaries$feature)
+library(leaflet)
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(out$boundaries$feature)
+westfield$messages
+devtools::load_all(".")
+out %>% class
+out <- structure(list(featurecollection = list(pourpoints = ppt,
+boundaries = bnd)),
+class = "watershed")
+out
+leafletWatershed(out)
+writeGeoJSON(out, file = "twoWatersheds.geojson")
+devtools::load_all(".")
+devtools::load_all(".")
+boundaries <- lapply(wslist, pullFeature, what = "boundary") %>%
+lapply(`[[`, 1) %>%
+Map(f = addID, ftr = ., id = id)
+# extract pourpoints
+pourpoints <- lapply(wslist, pullFeature, what = "pourpoint") %>%
+lapply(`[[`, 1) %>%
+Map(f = addID, ftr = ., id = id)
+bnd$feature$features <- boundaries
+ppt$feature$features <- pourpoints
+out <- structure(list(featurecollection = list(pourpoints = ppt,
+boundaries = bnd)),
+class = "watershed")
+leafletWatershed(out)
+writeGeoJSON(out, file = "twoWatersheds.geojson")
+out$featurecollection$boundaries$name
+out$featurecollection$boundaries$feature$type
+bd <- pullFeature(out)
+str(bd, 1)
+class(out)
+foo = writeGeoJSON(out, file = "twoWatersheds.geojson")
+str(foo, 1)
+foo = jsonlite::fromJSON(foo)
+str(foo, 1)
+str(out, 1)
+str(boundaries, 1)
+westfield$featurecollection[[1]]$feature$features[[1]]$type
+westfield$featurecollection[[1]]$name
+westfield$featurecollection[[1]]$feature$type
+bnd$feature$type
+watershed = out
+what = "boundary"
+what <- match.arg(what)
+elem <- ifelse(what == "boundary", 2, 1)
+elem
+piece <- pullFeature(watershed, what = what)
+piece[[1]]$type
+devtools::load_all(".")
+piece <- pullFeature(watershed, what = what)
+piece$type
+outstr <- jsonlite::toJSON(piece, auto_unbox = TRUE)
+devtools::load_all(".")
+foo = writeGeoJSON(out, file = "twoWatersheds.geojson")
+devtools::load_all(".")
+westfield$featurecollection[[2]]$feature$type
+devtools::load_all(".")
+foo = combineWatersheds(list(westfield, ws1))
+class(ws1)
+foo = combineWatersheds(list(westfield, ws1), id = c("abc", "def"))
+leafletWatershed(foo)
+class(foo)
+foo$featurecollection$boundaries$feature$type
+foo$featurecollection$boundaries$feature$features %>% str(1)
+writeGeoJSON(foo, file = "twoWatersheds.geojson")
+devtools::load_all(".")
+writeGeoJSON(foo, file = "twoWatersheds.geojson")
+writeGeoJSON(foo, file = "twoWatersheds.geojson")
+foo = combineWatersheds(list(westfield, ws2), id = c("abc", "def"))
+writeGeoJSON(foo, file = "twoWatersheds.geojson")
+leafletWatershed(foo)
+pommoqusset = ws2
+use_data(pommoqusset)
+?person
+data(westfield)
+data(pommoquesset)
+devtools::load_all(".")
+data(pommoquesset)
+data(pommoqusset)
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+l1 <- leafletWatershed(combo)
+l1
+devtools::document()
+devtools::document()
+getOption("timeout")
+westfield$featurecollection[[1]]$name
+westfield$featurecollection[[2]]$name
+mtcars$qs
+mtcars[["qs"]]
+devtools::load_all(".")
+westfield$featurecollection[[1]] %>% str(1)
+westfield$featurecollection[[1]]$feature$type
+westfield$featurecollection[[1]]$feature$crs
+?assert_that
+NA$features[[1]]
+library(devtools)
+test(filter = "watershed")
+test(filter = "watershed")
+data(westfield)
+f1 <- paste0(tempfile(), ".geojson")
+f2 <- paste0(tempfile(), ".geojson")
+writeGeoJSON(watershed = westfield, file = f1)
+traceback()
+writeGeoJSON(watershed = westfield, file = f1)
+devtools::load_all(".")
+writeGeoJSON(watershed = westfield, file = f1)
+test(filter = "watershed")
+data(westfield)
+data(pommoqusset)
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+traceback()
+westfield$featurecollection[[1]]$feature$crs
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+library(devtools)
+document()
+use_package("assertthat")
+document()
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+test(filter = "watershed")
+is.list(NULL)
+pryr::where("rbind_all2")
+?bind_rows
+?as.data.frame
+test(filter = "watershed")
+test(filter = "watershed")
+test(filter = "watershed")
+document()
+is("abc", character(1))
+?vapply
+logical(1)
+wslist = list(list(), list(parameters = 0))
+any(vapply(wslist, function(ws) !is.null(ws$parameters), logical(1)))
+wslist = list(list(), list(parame = 0))
+any(vapply(wslist, function(ws) !is.null(ws$parameters), logical(1)))
+data("pommoqusset")
+pommoqusset$parameters
+devtools::load_all(".")
+devtools::load_all(".")
+pommoqusset$parameters <- streamstats:::fs_toDf(pommoqusset$parameters)
+pommoqusset$parameters
+library(dplyr)
+ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+includeparameters = "true",
+includefeatures = "false")
+options("timeout" = 420)
+ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+includeparameters = "true",
+includefeatures = "false")
+library(testthat)
+expect_null(ws1$featurecollection)
+leafletWatershed(ws1)
+ws1$featurecollection %>% str()
+expect_equal(length(ws1$featurecollection), 0)
+devtools::load_all(".")
+data("pommoqusset")
+westfield <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+includeparameters = "true")
+options(timeout = 400)
+devtools::load_all(".")
+devtools::load_all(".")
+setTimeout(240)
+options("timeout")
+?sprintf
+setTimeout(240)
+devtools::load_all(".")
+setTimeout(240)
+?GET
+traceback()
+?timeout
+?GET
+?curl::curl_fetch_memory
+westfield <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+includeparameters = "true")
+pommoqusset <- delineateWatershed(xlocation = -71.9588, ylocation = 42.4152, crs = 4326,
+includeparameters = "true")
+use_data(westfield)
+use_data(pommoqusset)
+library(devtools)
+use_data(westfield)
+use_data(pommoqusset)
+data(westfield)
+data(pommoqusset)
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+westfield
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+traceback()
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+hasparams
+id
+wslist[hasparams]
+wslist[hasparams] %>%
+lapply(`[[`, "parameters")
+wslist[hasparams] %>%
+lapply(`[[`, "parameters") %>%
+lapply(fs_toDf)
+wslist[hasparams] %>%
+lapply(`[[`, "parameters") %>%
+lapply(fs_toDf) %>%
+setNames(make.names(id[hasparams]))
+wslist[hasparams] %>%
+lapply(`[[`, "parameters") %>%
+lapply(fs_toDf) %>%
+setNames(make.names(id[hasparams])) %>%
+bind_rows(.id = "ID")
+devtools::load_all(".")
+westfield <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
+includeparameters = "true")
+use_data(westfield, overwrite = TRUE)
+devtools::load_all(".")
+data(westfield)
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+paramIDs
+wslist[hasparams] %>%
+lapply(`[[`, "parameters") %>%
+lapply(fs_toDf)
+wslist[hasparams] %>%
+lapply(`[[`, "parameters")
+westfield$parameters %>% fs_toDf
+westfield$parameters
+wslist[hasparams] %>%
+lapply(`[[`, "parameters") %>%
+setNames(make.names(id[hasparams])) %>%
+bind_rows(.id = "ID")
+pommoqusset$parameters
+pommoqusset <- delineateWatershed(xlocation = -71.9588, ylocation = 42.4152, crs = 4326,
+includeparameters = "true")
+pommoqusset$parameters
+use_data(pommoqusset, overwrite = TRUE)
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+devtools::load_all(".")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+expect_is(combo$parameters, "data.frame")
+library(testthat)
+expect_is(combo$parameters, "data.frame")
+combo$parameters
+combo$parameters
+combo$parameters %>% print(n = 100)
+library(dplyr)
+combo$parameters %>% print(n = 100)
+str(mtcars)
+foo = data.frame(a = as.factor(1:5))
+bar = data.frame(bar = as.character("abc", "def"))
+bind_rows(foo, bar)
+bind_rows(list(foo, bar))j
+bind_rows(list(foo, bar))
+bar
+bar = data.frame(a = as.character("abc", "def"))
+bind_rows(list(foo, bar))
+devtools::document()
+devtools::document()
+?addGeoJSON
+library(leaflet)
+?addGeoJSON
+devtools::load_all(".")
+data(westfield)
+watershed = westfield
+wsjs <- watershed$featurecollection[[2]]$feature
+ptjs <- watershed$featurecollection[[1]]$feature
+leaflet() %>%
+addTiles() %>%
+addPolygons(data = wsjs) %>%
+addMarkers(data = ptjs)
+library(leaflet)
+?readOGR
+library(jsonlite)
+library(rgdal)
+?readOGR
+addGeoJSON
+?addGeoJSON
+wsjs <- watershed$featurecollection[[2]]$feature
+ptjs <- watershed$featurecollection[[1]]$feature
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(wsjs) %>%
+addGeoJSON(ptjs)
+pathOptions()
+?pathOptions
+?addPopups
+ptjs$features
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(wsjs, layerId = "boundary") %>%
+addGeoJSON(ptjs, layerId = "pourpoint") %>%
+addPopups(layerId = "pourpoint", popup = ~name)
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(watershed$featurecollection[[2]]$feature) %>%
+addGeoJSON(watershed$featurecollection[[1]]$feature)
+watershed = combineWatersheds(list(westfield, pommoqusset), ide = c("wf", "pom"))
+watershed = combineWatersheds(list(westfield, pommoqusset), id = c("wf", "pom"))
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(watershed$featurecollection[[2]]$feature) %>%
+addGeoJSON(watershed$featurecollection[[1]]$feature)
+params = watershed$parameters
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(watershed$featurecollection[[2]]$feature) %>%
+addGeoJSON(watershed$featurecollection[[1]]$feature,
+popup = ~params$ID)
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(watershed$featurecollection[[2]]$feature) %>%
+addGeoJSON(watershed$featurecollection[[1]]$feature,
+options = popup = ~params$ID)
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(watershed$featurecollection[[2]]$feature) %>%
+addGeoJSON(watershed$featurecollection[[1]]$feature,
+options = list(popup = ~params$ID))
+pathOptions(popup = ~params$ID)
+leaflet() %>%
+addTiles() %>%
+addGeoJSON(watershed$featurecollection[[2]]$feature) %>%
+addGeoJSON(watershed$featurecollection[[1]]$feature,
+options = pathOptions(popup = ~params$ID))
+?pathOptions
+westfield$featurecollection[[1]]$feature$features
+watershed$featurecollection$pourpoints$feature$features
+watershed$featurecollection$pourpoints$feature$features %>% streamstats:::fs_toDf()
+watershed$featurecollection$pourpoints$feature$features %>% lapply(`[[`, "geometry") %>% streamstats:::fs_toDf()
+watershed$featurecollection$pourpoints$feature$features[[1]]$properties
+watershed$featurecollection$pourpoints$feature$features[[1]]$geometry
+watershed$featurecollection$pourpoints$feature$features[[1]]$geometry$coordinates
+watershed$featurecollection$pourpoints$feature$features %>%
+lapply(function(x) x$geometry$coordinats) %>%
+streamstats::fs_toDf()
+watershed$featurecollection$pourpoints$feature$features %>%
+lapply(function(x) x$geometry$coordinats)
+watershed$featurecollection$pourpoints$feature$features
+watershed$featurecollection$pourpoints$feature$features %>%
+lapply(function(x) x$geometry$coordinates)
+watershed$featurecollection$pourpoints$feature$features %>%
+lapply(function(x) x$geometry$coordinates) %>%
+streamstats::fs_toDf()
+watershed$featurecollection$pourpoints$feature$features %>%
+lapply(function(x) x$geometry$coordinates)
+unique
+methods("unique")
+unclass(mtcars)
+unclass(mtcars) %>% class
+library(devtools)
+test(filter = "watershed")
+document()
+document()
+devtools::install()
+devtools::load_all(".")
+foo = try(delineateWatershed(1290, 123, "MA"))
+foo = try(delineateWatershed(1290, 123, "MA", crs = 142))
+foo
+?try
+class(foo)
+devtools::load_all(".")
+foo = try(delineateWatershed(1290, 123, "MA", crs = 142))
+class(foo)
+foo = delineateWatershed(1290, 123, "MA", crs = 142)
+class(foo)
+?warn_for_status
+debug(sstat_check)
+foo = delineateWatershed(1290, 123, "MA", crs = 142)
+stnames
+?stop
+devtools::load_all(".")
+library(devtools)
+document()
+devtools::load_all(".")
+foo = delineateWatershed(1290, 123, "MA", crs = 142)
+library(geojsonio)
+install.packages("geojsonio")
+library(geojsonio)
+library(rgdal)
+?ogrListLayers
+devtools::load_all(".")
+data(westfield)
+foo = ogrListLayers(pullFeatureCollection(westfield))
+tpf <- tempfile(fileext = "geojson")
+writeGeoJSON(westfield, file = tpf)
+tpf <- tempfile(fileext = ".geojson")
+writeGeoJSON(westfield, file = tpf)
+ogrListLayers
+foo = ogrListLayers(tpf)
+str(foo)
+bar <- readOGR(tpf, foo)
+str(bar)
+bar
+plot(bar)
+str(foo)
+bar <- readOGR(tpf, "OGRGeoJSON")
+?writeOGR
+?readOGR
+devtools::load_all(".")
+devtools::document()
+devtools::load_all(".")
+data("westfield")
+data("pommoqusset")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+expect_is(toSp(combo, "boundary"), "SpatialPolygonsDataFrame")
+library(testthat)
+expect_is(toSp(combo, "boundary"), "SpatialPolygonsDataFrame")
+expect_is(toSp(combo, "pourpoint"), "SpatialPointsDataFrame")
+devtools::load_all(".")
+expect_is(toSp(combo, "pourpoint"), "SpatialPointsDataFrame")
+td <- tempdir()
+devtools::document()
+devtools::load_all(".")
+writeShapefile(combo, "bndry", td)
+writeShapefile(combo, "pourpts", td, what = "pourpoint")
+list.files(td)
+foo <- readOGR(td, layer = "bdry")
+foo <- readOGR(td, layer = "bndry")
+expect_is(readOGR(td, layer = "bndry"), "SpatialPolygonsDataFrame")
+expect_is(readOGR(td, layer = "pourpts"), "SpatialPointsDataFrame")
+devtools::test(filter = "watershed")
+devtools::test(filter = "watershed")
+td
+td <- tempdir()
+td
+?tempdir
+?unlink
+unlink(td)
+expect_is(readOGR(td, layer = "bndry"), "SpatialPolygonsDataFrame")
+td
+list.files(td)
+unlink(td, recursive = TRUE, force = TRUE)
+list.files(td)
+devtools::test(filter = "watershed")
+unlink(td, recursive = TRUE, force = TRUE)
+data("westfield")
+data("pommoqusset")
+combo <- combineWatersheds(list(westfield, pommoqusset), c("wf", "pom"))
+expect_is(toSp(combo, "boundary"), "SpatialPolygonsDataFrame")
+debug(writeGeoJSON)
+expect_is(toSp(combo, "boundary"), "SpatialPolygonsDataFrame")
+watershed
+file
+list.files("/tmp")
+tempdir()
+dir.create(tempdir())
+list.files(tempdir()
+)
+undebug(writeGeoJSON)
+devtools::load_all(".")
+expect_is(toSp(combo, "boundary"), "SpatialPolygonsDataFrame")
+expect_is(toSp(combo, "pourpoint"), "SpatialPointsDataFrame")
+list.files(tempdir())
+td <- tempdir()
+writeShapefile(combo, "bndry", td)
+writeShapefile(combo, "pourpts", td, what = "pourpoint")
+expect_is(readOGR(td, layer = "bndry"), "SpatialPolygonsDataFrame")
+expect_is(readOGR(td, layer = "pourpts"), "SpatialPointsDataFrame")
+list.files(tempdir())
+list.files(tempdir(), full.names = TRUE)
+unlink(list.files(tempdir(), full.names = TRUE))
+list.files(tempdir(), full.names = TRUE)
+devtools::test(filter=  "watershed")
+devtools::document()
+devtools::document()
+devtools::document()
+18380.5 - 5627.2 - 12726.3 - 1.65
+1.65 \ (25.4 / 9)
+1.65 / (25.4 / 9)
+qf(0.95, 1, 9)
+qf(0.95, 1, df2 = 9)
+6363.2 / 1.647
+1125.4 / 1.647
+qf(0.95, 5, 10)
+qf(0.95, 2, 10)
+qf(0.99, 5, 10)
+qf(0.99, 5, 10)
+228 / 15
+15 * 1.235
+devtools::load_all(".")
+devtools::document()
+devtools::load_all(".")
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::document()
+devtools::test(filter = "watershed")

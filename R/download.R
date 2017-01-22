@@ -2,6 +2,7 @@
 # download workspace contents as a geodatabase or shapefiles
 
 #' Download watershed resource based on workspace
+#'
 #' returns a zip file containing the workspace contents, in either a
 #' geodatabase or shape files
 #'

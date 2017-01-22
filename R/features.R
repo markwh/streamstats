@@ -2,6 +2,7 @@
 # list of spatial features computed for the study area
 
 #' List available features for a given workspace
+#'
 #' returns a returns a collection of spatial feature names available for the
 #' workspace.
 #' @param workspaceID	Service workspace received from watershed
@@ -20,6 +21,7 @@ availFeatures <- function(workspaceID) {
 }
 
 #' Get features for a given workspace
+#'
 #' returns a returns a collection of spatial feature names available for the
 #' workspace.
 #' @param workspaceID	Service workspace received from watershed

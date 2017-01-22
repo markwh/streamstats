@@ -1,12 +1,3 @@
-#
-# ws1 <- westfield
-# ws2 <- delineateWatershed(xlocation = -71.9588, ylocation = 42.4152, crs = 4326)
-# ws1$featurecollection
-# ws2$featurecollection[[1]]$feature$features
-#
-#
-# wslist <- list(ws1, ws2)
-
 #' Combine watershed objects into single geojson-structured list
 #'
 #' Returns a watershed object with elements of wslist combined into a single

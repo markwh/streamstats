@@ -1,4 +1,5 @@
 #' Delineate watershed based on location specification
+#'
 #' Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
 #'
 #' @param xlocation X location of the most downstream point of desired study area.

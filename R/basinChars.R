@@ -2,6 +2,7 @@
 # Basin characteristics functions
 
 #' Get Availale Basin Characteristics
+#'
 #' The basin characteristics resource represent a list of characteristics that
 #' defines the study area, such as Drainage Area and mean annual precipitation.
 #'
@@ -19,6 +20,7 @@ availChars <- function(rcode, group = NULL) {
 }
 
 #' Compute basin characteristics
+#'
 #' Returns the computed basin characteristics based on the request configuration.
 #' @param rcode 2-3 character code that identifies the Study Area (either a
 #'  State or a Regional Study)
@@ -27,6 +29,7 @@ availChars <- function(rcode, group = NULL) {
 #' @param includeparameters Comma separated list of region
 #'  parameters to compute. Default: true, will return all parameters for region
 #' @export
+#'
 computeChars <- function(workspaceID, rcode, includeparameters = "true") {
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)

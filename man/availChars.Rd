@@ -2,9 +2,7 @@
 % Please edit documentation in R/basinChars.R
 \name{availChars}
 \alias{availChars}
-\title{Get Availale Basin Characteristics
-The basin characteristics resource represent a list of characteristics that
-defines the study area, such as Drainage Area and mean annual precipitation.}
+\title{Get Availale Basin Characteristics}
 \usage{
 availChars(rcode, group = NULL)
 }
@@ -14,7 +12,6 @@ availChars(rcode, group = NULL)
 \item{group}{(optional) Key word parameter group filter.}
 }
 \description{
-Get Availale Basin Characteristics
 The basin characteristics resource represent a list of characteristics that
 defines the study area, such as Drainage Area and mean annual precipitation.
 }

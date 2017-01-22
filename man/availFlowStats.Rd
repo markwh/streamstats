@@ -2,9 +2,7 @@
 % Please edit documentation in R/flowStats.R
 \name{availFlowStats}
 \alias{availFlowStats}
-\title{Get available flow statistics for a region
-returns a list of flowstatistics available to be computed in the selected
-region.}
+\title{Get available flow statistics for a region}
 \usage{
 availFlowStats(rcode)
 }
@@ -14,7 +12,6 @@ State or a Regional Study)
 @export}
 }
 \description{
-Get available flow statistics for a region
 returns a list of flowstatistics available to be computed in the selected
 region.
 }

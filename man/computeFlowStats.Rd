@@ -2,10 +2,7 @@
 % Please edit documentation in R/flowStats.R
 \name{computeFlowStats}
 \alias{computeFlowStats}
-\title{Compute flow statistics
-Returns the computed flow statistic values based on the request configuration.
-Currently does *not* return all of the information retrieved by the API call.
-References cited include}
+\title{Compute flow statistics}
 \usage{
 computeFlowStats(workspaceID, rcode, includeparameters = c("true", "false"))
 }
@@ -20,7 +17,6 @@ State or a Regional Study)}
 to compute. Default: true, will return all flow types available for region}
 }
 \description{
-Compute flow statistics
 Returns the computed flow statistic values based on the request configuration.
 Currently does *not* return all of the information retrieved by the API call.
 References cited include

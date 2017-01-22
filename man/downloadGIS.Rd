@@ -2,9 +2,7 @@
 % Please edit documentation in R/download.R
 \name{downloadGIS}
 \alias{downloadGIS}
-\title{Download watershed resource based on workspace
-returns a zip file containing the workspace contents, in either a
-geodatabase or shape files}
+\title{Download watershed resource based on workspace}
 \usage{
 downloadGIS(workspaceID, file, format = c("geodatabase", "shapefile"))
 }
@@ -17,7 +15,6 @@ service result}
 \item{format}{either "geodatabase" or "shapefile"}
 }
 \description{
-Download watershed resource based on workspace
 returns a zip file containing the workspace contents, in either a
 geodatabase or shape files
 }

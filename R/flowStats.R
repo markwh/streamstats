@@ -2,6 +2,7 @@
 # flow statistics computed for the study area.
 
 #' Get available flow statistics for a region
+#'
 #' returns a list of flowstatistics available to be computed in the selected
 #' region.
 #' @param rcode 2-3 character code that identifies the Study Area (either a
@@ -19,6 +20,7 @@ availFlowStats <- function(rcode) {
 
 
 #' Compute flow statistics
+#'
 #' Returns the computed flow statistic values based on the request configuration.
 #' Currently does *not* return all of the information retrieved by the API call.
 #' References cited include
@@ -31,6 +33,7 @@ availFlowStats <- function(rcode) {
 #' @export
 computeFlowStats <- function(workspaceID, rcode,
                              includeparameters = c("true", "false")) {
+  includeparameters <- match.arg(includeparameters)
   stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)

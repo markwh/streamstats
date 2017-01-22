@@ -2,8 +2,7 @@
 % Please edit documentation in R/basinChars.R
 \name{computeChars}
 \alias{computeChars}
-\title{Compute basin characteristics
-Returns the computed basin characteristics based on the request configuration.}
+\title{Compute basin characteristics}
 \usage{
 computeChars(workspaceID, rcode, includeparameters = "true")
 }
@@ -18,7 +17,6 @@ State or a Regional Study)}
 parameters to compute. Default: true, will return all parameters for region}
 }
 \description{
-Compute basin characteristics
 Returns the computed basin characteristics based on the request configuration.
 }
 

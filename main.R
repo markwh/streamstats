@@ -28,3 +28,8 @@ use_package("httr")
 use_package("maps")
 use_package("assertthat")
 use_package("maptools")
+
+
+# vignettes
+
+devtools::use_vignette(name = "watershed delineation")
