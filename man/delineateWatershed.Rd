@@ -31,7 +31,7 @@ might come in handy.}
 \item{simplify}{boolean    Whether to simplify returned result, defaut: true}
 }
 \description{
-Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
+Uses StreamStats API https://streamstats.usgs.gov/streamstatsservices/#
 }
 \examples{
 \dontrun{

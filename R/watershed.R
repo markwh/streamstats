@@ -1,6 +1,6 @@
 #' Delineate watershed based on location specification
 #'
-#' Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
+#' Uses StreamStats API https://streamstats.usgs.gov/streamstatsservices/#
 #'
 #' @param xlocation X location of the most downstream point of desired study area.
 #' @param ylocation Y location of the most downstream point of desired study area.
@@ -64,7 +64,7 @@ delineateWatershed <- function(xlocation, ylocation, rcode = NULL,
 #' @param crs	string ESPSG spatial reference code. The function rgdal::showEPSG
 #'  might come in handy.
 #' @param simplify	boolean	Whether to simplify returned result, defaut: true
-#' Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#
+#' Uses StreamStats API https://streamstats.usgs.gov/streamstatsservices/#
 #' @export
 watershedByWorkspace <- function(workspaceID,
                                  rcode,

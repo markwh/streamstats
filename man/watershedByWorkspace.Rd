@@ -29,7 +29,7 @@ Default: true, returns delineated basin and pourpoint}
 might come in handy.}
 
 \item{simplify}{boolean    Whether to simplify returned result, defaut: true
-Uses StreamStats API http://streamstatsags.cr.usgs.gov/streamstatsservices/#}
+Uses StreamStats API https://streamstats.usgs.gov/streamstatsservices/#}
 }
 \description{
 Returns a watershed based on "workspace" info

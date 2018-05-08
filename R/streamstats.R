@@ -13,7 +13,7 @@
 sstat_get <- function(service, arglist = list(), check = TRUE) {
 
   dots <- arglist[!sapply(arglist, is.null)]
-  url0 <- paste0('http://streamstatsags.cr.usgs.gov/streamstatsservices/',
+  url0 <- paste0('https://streamstats.usgs.gov/streamstatsservices/',
                  service)
   append <- sstat_makeArgs(dots)
 
