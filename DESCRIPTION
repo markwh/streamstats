@@ -1,7 +1,7 @@
 Package: streamstats
 Type: Package
 Title: R bindings to the USGS Streamstats API
-Version: 0.0.1.9011
+Version: 0.0.1.9012
 Authors@R: c(
     person("Mark", "Hagemann", email = "mark.hagemann@gmail.com",
            role = c("aut", "cre")))
@@ -13,13 +13,14 @@ RoxygenNote: 5.0.1
 Suggests: testthat,
     knitr,
     rmarkdown
-Imports: magrittr,
+Imports: 
+    magrittr,
     jsonlite,
     httr,
     maps,
     maptools,
     assertthat,
-    dplyr,
+    dplyr (>= 0.7.0),
     leaflet,
     rgdal
 VignetteBuilder: knitr
