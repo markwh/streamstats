@@ -175,7 +175,7 @@ toSp <- function(watershed, what = c("boundary", "pourpoint")) {
   tpf <- tempfile(fileext = ".geojson")
   writeGeoJSON(watershed, file = tpf, what = what)
 
-  out <- readOGR(tpf, "OGRGeoJSON")
+  out <- readOGR(tpf)#, "OGRGeoJSON")
   unlink(tpf)
   out
 }
