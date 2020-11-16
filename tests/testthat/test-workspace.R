@@ -18,7 +18,7 @@ test_that("Functions to get, use watershed workspace work", {
 
   # flowstats
   fs1 <- computeFlowStats(workspaceID = ws1$workspaceID, rcode = "MA")
-  expect_is(fs1, "list")
+  expect_is(fs1, "data.frame")
 
   # features
   ft1 <- availFeatures(workspaceID = ws1$workspaceID)

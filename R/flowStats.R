@@ -32,10 +32,8 @@ availFlowStats <- function(rcode) {
 #'   This will also remove the `error` column.
 #' @export
 computeFlowStats <- function(workspaceID, rcode, simplify = FALSE) {
-  includeparameters <- match.arg(includeparameters)
   stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
-  args <- list(rcode = rcode, workspaceID = workspaceID,
-               includeparameters = includeparameters)
+  args <- list(rcode = rcode, workspaceID = workspaceID)
   ret1 <- sstat_get("flowstatistics.json", args)
   out <- parse_stats(ret1, simplify = simplify)
 
@@ -52,16 +50,17 @@ parse_stats <- function(statslist, simplify = FALSE) {
   out
 }
 
-#' Parse a statisics group
+#' Parse a statistics group
 #'
 #' @param statsgroup a single compoent of a list returned by `sstat_get()`
 #' @inheritParams computeFlowStats
+#' @importFrom dplyr mutate
 parse_statsgroup <- function(statsgroup, simplify = FALSE) {
   regionslist <- statsgroup$RegressionRegions
   nregions <- length(regionslist)
   if (nregions > 1) regionslist <- regionslist[1:(nregions - 1)] # Last region is weighted average
 
-  parsed_regions <- map(regionslist, ~parse_region(.)) %>%
+  parsed_regions <- purrr::map(regionslist, ~parse_region(.)) %>%
     bind_rows()
 
   if (simplify) {

@@ -44,7 +44,7 @@ Uses StreamStats API https://streamstats.usgs.gov/streamstatsservices/#
 \dontrun{
 # Delineate a watershed and extract parameters using WGS83
 ws1 <- delineateWatershed(xlocation = -72.9249, ylocation = 42.3170, crs = 4326,
-includeparameters = "true"
+includeparameters = "true")
 }
 
 }

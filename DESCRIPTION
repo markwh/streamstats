@@ -14,6 +14,8 @@ Encoding: UTF-8
 Suggests: testthat,
     knitr,
     rmarkdown
+Depends: 
+    R (>= 2.10)
 Imports: 
     magrittr,
     jsonlite,
@@ -23,5 +25,7 @@ Imports:
     assertthat,
     dplyr (>= 0.7.0),
     leaflet,
-    rgdal
+    rgdal,
+    purrr,
+    xml2
 VignetteBuilder: knitr

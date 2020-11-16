@@ -106,8 +106,7 @@ leafletWatershed <- function(watershed) {
 
   pointLalo <- extractLaLo(watershed)
 
-  if (is.null(pointLalo$ID))
-    pointLalo$ID = NA
+  if (!exists("ID", pointLalo)) pointLalo$ID <-  NA
 
   # params = watershed$parameters
   leaflet() %>%

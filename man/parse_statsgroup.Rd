@@ -2,7 +2,7 @@
 % Please edit documentation in R/flowStats.R
 \name{parse_statsgroup}
 \alias{parse_statsgroup}
-\title{Parse a statisics group}
+\title{Parse a statistics group}
 \usage{
 parse_statsgroup(statsgroup, simplify = FALSE)
 }
@@ -13,5 +13,5 @@ parse_statsgroup(statsgroup, simplify = FALSE)
 This will also remove the `error` column.}
 }
 \description{
-Parse a statisics group
+Parse a statistics group
 }
