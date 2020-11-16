@@ -4,8 +4,13 @@
 \alias{getFeatures}
 \title{Get features for a given workspace}
 \usage{
-getFeatures(workspaceID, rcode, crs, features = c("globalwatershedpoint",
-  "globalwatershed"), simplify = "true")
+getFeatures(
+  workspaceID,
+  rcode,
+  crs,
+  features = c("globalwatershedpoint", "globalwatershed"),
+  simplify = "true"
+)
 }
 \arguments{
 \item{workspaceID}{Service workspace received from watershed
@@ -24,4 +29,3 @@ Default: true, returns delineated basin and pourpoint}
 returns a returns a collection of spatial feature names available for the
 workspace.
 }
-

@@ -18,4 +18,3 @@ service result}
 returns a zip file containing the workspace contents, in either a
 geodatabase or shape files
 }
-

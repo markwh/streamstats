@@ -5,9 +5,15 @@
 \title{Returns a watershed based on "workspace" info
 Currently untested.}
 \usage{
-watershedByWorkspace(workspaceID, rcode, includeparameters = c("false",
-  "true"), includeflowtypes = c("false", "true"),
-  includefeatures = c("true", "false"), crs, simplify = NULL)
+watershedByWorkspace(
+  workspaceID,
+  rcode,
+  includeparameters = c("false", "true"),
+  includeflowtypes = c("false", "true"),
+  includefeatures = c("true", "false"),
+  crs,
+  simplify = NULL
+)
 }
 \arguments{
 \item{workspaceID}{string        Service workspace received from watershed
@@ -35,4 +41,3 @@ Uses StreamStats API https://streamstats.usgs.gov/streamstatsservices/#}
 Returns a watershed based on "workspace" info
 Currently untested.
 }
-

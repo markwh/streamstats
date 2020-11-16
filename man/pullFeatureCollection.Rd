@@ -11,4 +11,3 @@ pullFeatureCollection(ws, what = c("boundary", "pourpoint"))
 extract part of watershed list corresponding to an individual feature collection
 Returns a FeatureCollection.
 }
-

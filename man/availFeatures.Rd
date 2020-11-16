@@ -14,4 +14,3 @@ service result}
 returns a returns a collection of spatial feature names available for the
 workspace.
 }
-

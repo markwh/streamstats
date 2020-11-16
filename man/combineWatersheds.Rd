@@ -21,4 +21,3 @@ FeatureCollection
   combo <- combineWatersheds(list(westfield, pommoqusset), id = c("wf", "pom"))
   leafletWatershed(combo)
 }
-

@@ -15,4 +15,3 @@ availChars(rcode, group = NULL)
 The basin characteristics resource represent a list of characteristics that
 defines the study area, such as Drainage Area and mean annual precipitation.
 }
-

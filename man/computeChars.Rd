@@ -19,4 +19,3 @@ parameters to compute. Default: true, will return all parameters for region}
 \description{
 Returns the computed basin characteristics based on the request configuration.
 }
-

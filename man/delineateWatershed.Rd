@@ -4,9 +4,16 @@
 \alias{delineateWatershed}
 \title{Delineate watershed based on location specification}
 \usage{
-delineateWatershed(xlocation, ylocation, rcode = NULL,
-  includeparameters = c("false", "true"), includeflowtypes = c("false",
-  "true"), includefeatures = c("true", "false"), crs, simplify = NULL)
+delineateWatershed(
+  xlocation,
+  ylocation,
+  rcode = NULL,
+  includeparameters = c("false", "true"),
+  includeflowtypes = c("false", "true"),
+  includefeatures = c("true", "false"),
+  crs,
+  simplify = NULL
+)
 }
 \arguments{
 \item{xlocation}{X location of the most downstream point of desired study area.}
@@ -41,4 +48,3 @@ includeparameters = "true"
 }
 
 }
-

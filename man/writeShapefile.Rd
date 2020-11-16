@@ -4,8 +4,7 @@
 \alias{writeShapefile}
 \title{Convert watershed to ESRI shapefile}
 \usage{
-writeShapefile(watershed, layer, dir = ".", what = c("boundary",
-  "pourpoint"))
+writeShapefile(watershed, layer, dir = ".", what = c("boundary", "pourpoint"))
 }
 \arguments{
 \item{watershed}{an object of class "watershed", as returned by
@@ -21,4 +20,3 @@ watershed object to write.}
 \description{
 Convert watershed to ESRI shapefile
 }
-

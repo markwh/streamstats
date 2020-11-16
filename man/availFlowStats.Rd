@@ -15,4 +15,3 @@ State or a Regional Study)
 returns a list of flowstatistics available to be computed in the selected
 region.
 }
-

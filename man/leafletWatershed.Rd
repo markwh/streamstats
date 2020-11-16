@@ -17,4 +17,3 @@ Create a leaflet map of a watershed
 Uses an object returned by delineateWatershed() and displays the watershed
 boundary as well as the pour point.
 }
-

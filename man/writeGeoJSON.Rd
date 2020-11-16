@@ -19,4 +19,3 @@ watershed object to write.}
 \description{
 Write part of a `watershed` object to file in geoJSON format.
 }
-

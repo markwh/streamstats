@@ -28,32 +28,78 @@ availFlowStats <- function(rcode) {
 #'  State or a Regional Study)
 #' @param workspaceID	Service workspace received from watershed
 #'  service result
-#' @param includeflowtypes Comma separated list of flow types
-#'   to compute. Default: true, will return all flow types available for region
+#' @param simplify if TRUE, combine results across regression regions using an area-weighted average.
+#'   This will also remove the `error` column.
 #' @export
-computeFlowStats <- function(workspaceID, rcode,
-                             includeparameters = c("true", "false")) {
+computeFlowStats <- function(workspaceID, rcode, simplify = FALSE) {
   includeparameters <- match.arg(includeparameters)
   stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)
   args <- list(rcode = rcode, workspaceID = workspaceID,
                includeparameters = includeparameters)
   ret1 <- sstat_get("flowstatistics.json", args)
-  flowstats <- ret1$Statisitcs$Streamstats$STREAMFLOWS$STREAMFLOW
-  fsnames <- vapply(flowstats, `[[`, character(1), "@name")
-  fsdfs <- lapply(flowstats, formatFlowStats) %>%
-    setNames(make.names(fsnames))
-
-  out <- fsdfs
+  out <- parse_stats(ret1, simplify = simplify)
 
   out
 }
 
+#' Parse the results of `sstat_get()` into a tidy  data.frame
+#'
+#' @param statslist A list as returned by `sstat_get()`
 #' @importFrom dplyr bind_rows
-formatFlowStats <- function(fslist) {
-  nss <- fslist$NSSproject$NSSScenario$NSSRegion %>% unlist %>%
-    setNames(make.names(names(.)))
-  params <- fs_toDf(fslist$REGIONS$REGION$PARAMETERS$PARAMETER)
-  flow <- fs_toDf(fslist$FLOWS$FLOWTYPE$FLOW)
-  out <- list(nss = nss, params = params, flow = flow)
+parse_stats <- function(statslist, simplify = FALSE) {
+  outlist <- purrr::map(statslist, ~parse_statsgroup(., simplify = simplify))
+  out <- bind_rows(outlist)
+  out
+}
 
+#' Parse a statisics group
+#'
+#' @param statsgroup a single compoent of a list returned by `sstat_get()`
+#' @inheritParams computeFlowStats
+parse_statsgroup <- function(statsgroup, simplify = FALSE) {
+  regionslist <- statsgroup$RegressionRegions
+  nregions <- length(regionslist)
+  if (nregions > 1) regionslist <- regionslist[1:(nregions - 1)] # Last region is weighted average
+
+  parsed_regions <- map(regionslist, ~parse_region(.)) %>%
+    bind_rows()
+
+  if (simplify) {
+    parsed_regions <- parsed_regions %>%
+      group_by(var_name, var_code, var_desc) %>%
+      # mutate(scaled_value = value * region_wt / sum(region_wt)) %>%
+      summarize(value = sum(value * region_wt / sum(region_wt)), .groups = "drop")
+  }
+
+  out <- parsed_regions %>%
+    mutate(group_name = statsgroup$StatisticGroupName,
+           group_id = statsgroup$StatisticGroupID)
+  out
+}
+
+#' Parse a region's results
+#'
+#' @param region a single component of a single `sstat_get()` sublist
+parse_region <- function(region) {
+  out <- purrr::map(region$Results, ~parse_result(.)) %>%
+    bind_rows() %>%
+    mutate(region_name = region$Name,
+           region_id = region$ID,
+           region_code = region$Code,
+           region_wt = region$PercentWeight / 100)
+  out
+}
+
+#' Parse the results component of region's result list
+#'
+#' @param result a single component of a `sstat_get()` sub-sublist
+parse_result <- function(result) {
+  out <- with(result, data.frame(
+    var_name = Name,
+    var_code = code,
+    var_desc = Description,
+    value = Value
+  ))
+  out$error <- list(result$Errors)
+  out
 }

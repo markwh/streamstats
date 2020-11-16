@@ -18,4 +18,3 @@ watershed object to write.}
 Convert watershed to sp
 Returns either SpatialPointsDataFrame or SpatialPolygonsDataFrame
 }
-
