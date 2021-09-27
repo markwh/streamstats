@@ -5,8 +5,10 @@
 #'
 #' returns a returns a collection of spatial feature names available for the
 #' workspace.
+#'
 #' @param workspaceID	Service workspace received from watershed
 #'  service result
+#' @importFrom methods is
 #' @export
 availFeatures <- function(workspaceID) {
   stopifnot(is(workspaceID, "character") && length(workspaceID) == 1)

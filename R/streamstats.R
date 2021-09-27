@@ -97,7 +97,7 @@ sstat_makeArgs <- function(arglist) {
     unlist() %>%
     # c("", .) %>%
     paste(collapse = "&") %>%
-    URLencode()
+    utils::URLencode()
 
   urlArgs
 }
@@ -112,7 +112,6 @@ sstat_makeArgs <- function(arglist) {
 #' The single argument to this function, pointsDF, is a data.frame in which:
 #' - column 1 contains the longitude in degrees (negative in the US)
 #' - column 2 contains the latitude in degrees
-#' @importFrom maps map
 
 latlon2state <- function(lat, lon) {
   # Prepare SpatialPolygons object with one SpatialPolygon
@@ -135,9 +134,10 @@ latlon2state <- function(lat, lon) {
   out <- vapply(stateNames[indices], FUN = getStateAb, character(1))
 }
 
+#' Get state abbreviation
 getStateAb <- function(statename) {
-  stateind <- which(tolower(state.name) == tolower(statename))
+  stateind <- which(tolower(datasets::state.name) == tolower(statename))
   if(length(stateind) != 1)
     stop("State name not identified.")
-  state.abb[stateind]
+  datasets::state.abb[stateind]
 }

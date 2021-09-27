@@ -1,7 +1,7 @@
 Package: streamstats
 Type: Package
 Title: R bindings to the USGS Streamstats API
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: c(
     person("Mark", "Hagemann", email = "mark.hagemann@gmail.com",
            role = c("aut", "cre")))
@@ -9,7 +9,7 @@ Description: Functions for delineating, visualizing, computing statistics about
     watersheds.
 License: MIT
 LazyData: TRUE
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Encoding: UTF-8
 Suggests: testthat,
     knitr,
@@ -27,5 +27,7 @@ Imports:
     leaflet,
     rgdal,
     purrr,
-    xml2
+    xml2,
+    methods,
+    sp
 VignetteBuilder: knitr

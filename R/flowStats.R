@@ -54,7 +54,7 @@ parse_stats <- function(statslist, simplify = FALSE) {
 #'
 #' @param statsgroup a single compoent of a list returned by `sstat_get()`
 #' @inheritParams computeFlowStats
-#' @importFrom dplyr mutate
+#' @importFrom dplyr mutate group_by summarize
 parse_statsgroup <- function(statsgroup, simplify = FALSE) {
   regionslist <- statsgroup$RegressionRegions
   nregions <- length(regionslist)

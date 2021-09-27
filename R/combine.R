@@ -11,6 +11,7 @@
 #'   combo <- combineWatersheds(list(westfield, pommoqusset), id = c("wf", "pom"))
 #'   leafletWatershed(combo)
 #' @importFrom assertthat assert_that
+#' @importFrom stats setNames
 #' @export
 combineWatersheds <- function(wslist, id) {
   stopifnot(all(sapply(wslist, is, "watershed")))
